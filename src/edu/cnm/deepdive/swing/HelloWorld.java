@@ -16,7 +16,7 @@ import javax.swing.SwingUtilities;
  * @author natedaag
  *
  */
-public class HelloWorld implements ActionListener {
+public class HelloWorld {
   
   private JFrame frame;
   
@@ -24,7 +24,7 @@ public class HelloWorld implements ActionListener {
     frame = new JFrame("Hello World in Swing");
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     JButton button = new JButton("Say Hello");
-    button.addActionListener(this);
+    button.addActionListener(evt -> JOptionPane.showMessageDialog(frame,  "Hello from inside anonymous."));
     frame.getContentPane().add(button);
     frame.pack();
     frame.setVisible(true);
@@ -37,10 +37,4 @@ public class HelloWorld implements ActionListener {
   public static void main(String[] args) {
     SwingUtilities.invokeLater(() -> {new HelloWorld().createAndShowGui();});// invoke when idle - once main is done
   }
-
-  @Override
-  public void actionPerformed(ActionEvent evt) { //this and invokeLater are functional interfaces (lambdas) 
-    JOptionPane.showMessageDialog(frame,  "Hello, you crazy World of Swing!");
-  }
-
 }
